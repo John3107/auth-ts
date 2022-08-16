@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import style from './App.module.scss'
+import Auth from "./components/auth/Auth"
+import Home from "./components/home/Home"
+import {Route, Routes} from "react-router-dom"
+import {useEffect} from "react";
+import {initialTC} from "./bll/app-reducer"
+import {useAppDispatch} from "./hooks/hooks"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(initialTC())
+    }, [dispatch])
+
+    return (
+        <div className={style.app}>
+            <Routes>
+                <Route path="/*" element={<Auth/>}/>
+                <Route path="/user/:login" element={<Home/>}/>
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
