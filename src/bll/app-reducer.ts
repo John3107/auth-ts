@@ -67,12 +67,11 @@ export const submittingTC = (submitData: UserType): AppThunk => (dispatch) => {
 export const deleteUserTC = (): AppThunk => (dispatch) => {
     expenseAPI.logout()
         .then(() => {
-            //if request will be work uncomment instead of finally
-            // dispatch(setTokenAC(''))
-            // dispatch(setUserDataAC(''))
-            // localStorage.removeItem('access-token')
-            // localStorage.removeItem('username')
-            // dispatch(setAuthModelAC('sing-in'))
+            dispatch(setTokenAC(''))
+            dispatch(setUserDataAC(''))
+            localStorage.removeItem('access-token')
+            localStorage.removeItem('username')
+            dispatch(setAuthModelAC('sing-in'))
         })
         .catch((err) => {
             console.log(err.message)

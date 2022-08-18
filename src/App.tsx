@@ -7,7 +7,7 @@ import {useEffect} from "react";
 import {initialTC} from "./bll/app-reducer"
 import {useAppDispatch} from "./hooks/hooks"
 
-function App() {
+const App = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
